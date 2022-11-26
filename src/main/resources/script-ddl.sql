@@ -52,3 +52,8 @@ select p.codigo, p.data, c.nome, pr.descricao, pr.preco from pedido p
 	on p.cliente_cod = c.codigo
 	and p.codigo = i.pedido_cod
 	and pr.codigo = i.produto_cod;
+
+create table atendente(
+                        codigo int not null primary key auto_increment,
+                        nome varchar(80)
+);
