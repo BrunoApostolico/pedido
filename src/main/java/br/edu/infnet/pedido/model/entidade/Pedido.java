@@ -10,19 +10,30 @@ public class Pedido {
 	private LocalDate data;
 	
 	private Cliente cliente;
+
+	private Atendente atendente;
 	
 	private List<Produto> produtos;
 
 	public Pedido() {
 	}
 	
-	public Pedido(Long numero, LocalDate data, Cliente cliente) {
+	public Pedido(Long numero, LocalDate data, Cliente cliente, Atendente atendente) {
 		super();
 		this.numero = numero;
 		this.data = data;
 		this.cliente = cliente;
+		this.atendente = atendente;
+
 	}
 
+	public Atendente getAtendente() {
+		return atendente;
+	}
+
+	public void setAtendente(Atendente atendente) {
+		this.atendente = atendente;
+	}
 
 	public Long getNumero() {
 		return numero;
@@ -58,7 +69,7 @@ public class Pedido {
 
 	@Override
 	public String toString() {
-		return "Pedido [numero=" + numero + ", data=" + data + ", cliente=" + cliente + ", produtos=" + produtos + "]";
+		return "Pedido [numero=" + numero + ", data=" + data + ", cliente=" + cliente + ", atendente=" + atendente + ", produtos=" + produtos + "]";
 	}
 	
 	

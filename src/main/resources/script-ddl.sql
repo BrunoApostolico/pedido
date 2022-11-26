@@ -25,7 +25,9 @@ create table pedido (
 	codigo int not null primary key auto_increment,
 	data date,
 	cliente_cod int,
-	foreign key (cliente_cod) references cliente(codigo)
+	foreign key (cliente_cod) references cliente(codigo),
+    atendente_cod int,
+    foreign key (atendente_cod) references atendente(codigo)
 );
 
 

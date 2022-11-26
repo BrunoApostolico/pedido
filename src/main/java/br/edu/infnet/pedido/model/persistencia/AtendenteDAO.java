@@ -1,7 +1,6 @@
 package br.edu.infnet.pedido.model.persistencia;
 
 import br.edu.infnet.pedido.model.entidade.Atendente;
-import br.edu.infnet.pedido.model.entidade.Cliente;
 
 import java.sql.SQLException;
 import java.util.ArrayList;

@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
+import br.edu.infnet.pedido.model.entidade.Atendente;
 import br.edu.infnet.pedido.model.entidade.Cliente;
 import br.edu.infnet.pedido.model.entidade.Pedido;
 import br.edu.infnet.pedido.model.entidade.Produto;
@@ -38,11 +39,13 @@ public class PedidoDAO extends JdbcDAO<Pedido>{
 
 	@Override
 	public List<Pedido> listarTodos() {
-		String sql = "select p.codigo, p.data, c.nome, pr.descricao, pr.preco from pedido p "
+		String sql = "select p.codigo, p.data, c.nome, a.nome, pr.descricao, pr.preco from pedido p "
 				+ "	join cliente c"
+				+ "	join atendente a"
 				+ "	join itens_pedido i"
 				+ "	join produto pr"
 				+ "	on p.cliente_cod = c.codigo"
+				+ "	and p.atendente_cod = a.atendente"
 				+ "	and p.codigo = i.pedido_cod"
 				+ "	and pr.codigo = i.produto_cod";
 		Map<Long, Pedido> pedidos = new TreeMap<>();
@@ -57,7 +60,7 @@ public class PedidoDAO extends JdbcDAO<Pedido>{
 				Double preco = rs.getDouble("preco");
 				Pedido pedido = null;
 				if(pedidos.get(codigo) == null) {
-					pedido = new Pedido(codigo, data, new Cliente(nome));
+					pedido = new Pedido(codigo, data, new Cliente(nome),new Atendente(nome));
 					pedido.setProdutos(new ArrayList<>());
 					pedidos.put(codigo, pedido);
 				}
