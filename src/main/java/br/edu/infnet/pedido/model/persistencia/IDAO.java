@@ -1,8 +1,8 @@
 package br.edu.infnet.pedido.model.persistencia;
 
-import java.util.List;
-
 import br.edu.infnet.pedido.model.entidade.Cliente;
+
+import java.util.List;
 
 public interface IDAO<T> {
 
